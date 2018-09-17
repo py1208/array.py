@@ -39,7 +39,22 @@ class Solution(object):
         for i in range(len(prices)-1):
             if prices[i+1]>prices[i]:
                 res = res + (prices[i+1]-prices[i])
-        return res              
+        return res 
+        
+#旋转数组
+class Solution(object):
+    def rotate(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        n=len(nums)
+        if n<2 or k==0:
+            return 
+        k=k%n
+        nums[:k],nums[k:]=nums[n-k:],nums[:n-k]
+   或者：nums[:]=nums[:l-k]+nums[l-k:]
         
 #给定一个整数数组，判断是否存在重复元素
 class Solution(object):
