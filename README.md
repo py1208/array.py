@@ -70,3 +70,60 @@ class Solution(object):
                 return True
             dic[i]=1
         return False
+  
+ #只出现一次的数字
+ class Solution(object):
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+    #方法一------------------------
+        num = 0
+        for i in nums:
+            num = num ^ i
+        return num   
+    #相同的数字经过异或运算后结果为0
+    #任何数字与0进行异或运算都是该数字本身
+    #方法二------------------------
+        nums.sort()
+        if len(nums)==1:
+            return nums[0]
+        else:
+            for i in range(0,len(nums)-1,2):
+                if nums[i] != nums[i+1]:
+                    return nums[i]
+            return nums[len(nums)-1]   
+            
+#2个数组的交集
+class Solution(object):
+    def intersect(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        num1=[]
+        for i in nums1:
+            for j in nums2:
+                if i == j:
+                    num1.append(i)
+                    nums2.remove(j)
+                    break
+        return num1
+        #--模仿优化-------
+         res=[]
+        for i in nums1:
+            if i in nums2:
+                res.append(i)
+                nums2.remove(i)
+        return res
+        #---执行速度快的参考----
+        d, res = {}, []
+        for i in nums1:
+            d[i]=d.get(i,0)+1
+        for j in nums2:
+            if d.get(j,0)!=0:
+                res.append(j)
+                d[j]-=1
+        return res
