@@ -1,4 +1,5 @@
 #从排序数组中删除重复项
+
 class Solution(object):
     def removeDuplicates(self, nums):
         """
@@ -17,6 +18,7 @@ class Solution(object):
         return low + 1 
 
 #买卖股票的最佳时机
+
 class Solution(object):
     def maxProfit(self, prices):
         """
@@ -35,6 +37,7 @@ class Solution(object):
                 tmp = i
         return profit
 #########参考的更好的算法
+
         res = 0
         for i in range(len(prices)-1):
             if prices[i+1]>prices[i]:
@@ -42,6 +45,7 @@ class Solution(object):
         return res 
         
 #旋转数组
+
 class Solution(object):
     def rotate(self, nums, k):
         """
@@ -49,20 +53,24 @@ class Solution(object):
         :type k: int
         :rtype: void Do not return anything, modify nums in-place instead.
         """
+        
         n=len(nums)
         if n<2 or k==0:
             return 
         k=k%n
         nums[:k],nums[k:]=nums[n-k:],nums[:n-k]
-   或者：nums[:]=nums[:l-k]+nums[l-k:]
+        #等价于
+        nums[:]=nums[:l-k]+nums[l-k:]
         
 #给定一个整数数组，判断是否存在重复元素
+
 class Solution(object):
     def containsDuplicate(self, nums):
         """
         :type nums: List[int]
         :rtype: bool
-        """       
+        """ 
+        
         l = len(nums)
         dic = {}
         for i in nums:
@@ -72,6 +80,7 @@ class Solution(object):
         return False
   
  #只出现一次的数字
+ 
  class Solution(object):
     def singleNumber(self, nums):
         """
@@ -86,6 +95,7 @@ class Solution(object):
     #相同的数字经过异或运算后结果为0
     #任何数字与0进行异或运算都是该数字本身
     #方法二------------------------
+    
         nums.sort()
         if len(nums)==1:
             return nums[0]
@@ -96,6 +106,7 @@ class Solution(object):
             return nums[len(nums)-1]   
             
 #2个数组的交集
+
 class Solution(object):
     def intersect(self, nums1, nums2):
         """
@@ -103,6 +114,7 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: List[int]
         """
+        
         num1=[]
         for i in nums1:
             for j in nums2:
@@ -112,6 +124,7 @@ class Solution(object):
                     break
         return num1
         #--模仿优化-------
+        
          res=[]
         for i in nums1:
             if i in nums2:
@@ -119,6 +132,7 @@ class Solution(object):
                 nums2.remove(i)
         return res
         #---执行速度快的参考----
+        
         d, res = {}, []
         for i in nums1:
             d[i]=d.get(i,0)+1
@@ -137,7 +151,7 @@ class Solution(object):
         """
         carry = 1
         l = len(digits)
-       
+        
         for i in range(l-1,-1,-1):
             tmp = digits[i]+carry
             carry = tmp/10
@@ -149,20 +163,25 @@ class Solution(object):
         return digits
         
 #移动零
+
 class Solution(object):
     def moveZeroes(self, nums):
         """
         :type nums: List[int]
         :rtype: void Do not return anything, modify nums in-place instead.
         """
+        
         for i in nums:
             if i == 0:
                 nums.remove(i)
                 nums.append(i)
+                
         #方法二-------速度快易理解-----
+        
         l = len(nums)
         n=0
         i=0
+        
         while i+n < l:
             if nums[i] == 0:
                 n += 1
