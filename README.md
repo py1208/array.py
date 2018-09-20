@@ -60,7 +60,7 @@ class Solution(object):
         k=k%n
         nums[:k],nums[k:]=nums[n-k:],nums[:n-k]
         #等价于
-        nums[:]=nums[:l-k]+nums[l-k:]
+        nums[:]=nums[l-k:]=nums[:l-k]
         
 #给定一个整数数组，判断是否存在重复元素
 
