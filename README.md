@@ -127,3 +127,49 @@ class Solution(object):
                 res.append(j)
                 d[j]-=1
         return res
+        
+#加一
+class Solution(object):
+    def plusOne(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+        carry = 1
+        l = len(digits)
+       
+        for i in range(l-1,-1,-1):
+            tmp = digits[i]+carry
+            carry = tmp/10
+            digits[i] = tmp%10
+            
+        if carry == 1:
+            digits.insert(0,1)
+            
+        return digits
+        
+#移动零
+class Solution(object):
+    def moveZeroes(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        for i in nums:
+            if i == 0:
+                nums.remove(i)
+                nums.append(i)
+        #方法二-------速度快易理解-----
+        l = len(nums)
+        n=0
+        i=0
+        while i+n < l:
+            if nums[i] == 0:
+                n += 1
+                del nums[i]
+            else:
+                i += 1
+        while n>0:
+            nums.append(0)
+            n -= 1
+        
