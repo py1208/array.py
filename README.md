@@ -192,3 +192,31 @@ class Solution(object):
             nums.append(0)
             n -= 1
         
+#两数之和
+
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        l = len(nums)
+        res = []
+        
+        for i in range(l-1):
+            for j in range(i+1,l):
+                if nums[i]+nums[j]==target:
+                    res.append(i)
+                    res.append(j)
+                    break
+        return res
+        
+     ########方法二
+       dic = dict()
+       for i,j in enumerate(nums):
+           sub = targer - j
+           if sub in dic:
+               return[dic[sub],i]
+           else:
+               dic[j]=i
